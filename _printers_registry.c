@@ -16,7 +16,6 @@ printer _get_printer(const char *specifier)
 		{"i", _print_int},
 		{NULL, NULL}
 	};
-
 	for (i = 0; printers[i].specifier != NULL; i++)
 	{
 		/**
@@ -27,6 +26,5 @@ printer _get_printer(const char *specifier)
 		if (*specifier == *(printers[i].specifier))
 			break;
 	}
-
 	return (printers[i]);
 }
