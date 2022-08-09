@@ -20,26 +20,24 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 			characters_printed++;
 		}
-
 		if (!format[i])
 			break;
-
-		printer = _get_printer(&format[i + 1]);
-		if (printer.specifier != NULL)
 		{
-			characters_printed += printer.run(args);
-			i += 2; /* move past the specifier */
-			continue;
+			printer = _get_printer(&format[i + 1]);
+			if (printer.specifier != NULL)
+			{
+				characters_printed += printer.run(args);
+				i += 2; /* move past the specifier */
+				continue;
+			}
+			_putchar(format[i]);
+			characters_printed++;
 		}
-		_putchar(format[i]);
-		characters_printed++;
-
 		if (format[i + 1] == '%')
 			i += 2; /* move past the % */
 		else
 			i++;
 	}
-
 	va_end(args);
 	return (characters_printed);
 }
